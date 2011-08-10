@@ -6,7 +6,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="itla.edu.black.conexion.Conexion"%>
 <%@page import="itla.edu.black.comentarios.ShowComentario"%>
-<!DOCTYPE html>
+
+<jsp:useBean id="conexion" class="itla.edu.black.conexion.Conexion">
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -56,7 +58,12 @@
         
         <div id="page">
             
-            <div id="header"></div>
+            <div id="header">
+                
+                <%= session.getAttribute("con") %>
+                
+                
+            </div>
             
             <div id="body">
                 

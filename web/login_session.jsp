@@ -23,6 +23,7 @@
         sesion.setAttribute("usuario",request.getParameter("email"));
         sesion.setAttribute("userName",nombre.getNombre(request.getParameter("email"))[0]);
         sesion.setAttribute("USER_PHOTO",nombre.getNombre(request.getParameter("email"))[1]);
+        sesion.setAttribute("con",Conexion.getConexion());
 
         response.sendRedirect("home.jsp");
     }
