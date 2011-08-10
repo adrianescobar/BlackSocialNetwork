@@ -53,7 +53,8 @@
             
             
             <!-------------------------------------------------------------->
-            <div id="photo_perfil_padre">
+            <div id="photo_perfil_padre" onclick="showChange()">
+                
                 </div>
                 <div id="photo_perfil_hijo" align="center">
                     

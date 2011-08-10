@@ -1,5 +1,5 @@
 function showChange(){
-    
+    alert("entro");
     padre = document.getElementById("photo_perfil_padre");
     hijo = document.getElementById("photo_perfil_hijo");
     
@@ -7,11 +7,13 @@ function showChange(){
         
         padre.style.display="none";
         hijo.style.display="none";
+        alert("entro3");
         
     }else{
      
      padre.style.display="block";
      hijo.style.display="block";
+     alert("entro5");
         
     }
     
