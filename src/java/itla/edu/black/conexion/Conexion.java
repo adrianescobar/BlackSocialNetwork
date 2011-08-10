@@ -9,8 +9,8 @@ import javax.swing.JOptionPane;
 public class Conexion {
     
     //referencia conexion
-    static Connection con;
-    static Conexion instancia = null;
+    private static Connection con;
+    private static Conexion instancia = null;
     
     private Conexion(){
         try{
