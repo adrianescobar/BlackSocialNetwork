@@ -19,10 +19,10 @@ public class Conexion {
             JOptionPane.showMessageDialog(null, "Error en la conexion!");
         }
     }
-    public synchronized  static Connection getConexion(){
+    public synchronized  static Conexion getConexion(){
          if(instancia==null){
             instancia = new Conexion();
         }
-        return con;
+        return instancia;
     }
 }
