@@ -11,7 +11,7 @@ public class Conexion {
     static Connection con;
     static Conexion clase;
     
-    private Conexion(){
+    public Conexion(){
         
         try{
         

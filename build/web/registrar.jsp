@@ -1,5 +1,5 @@
-<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.sql.Connection"%>
 <%@page import="itla.edu.black.conexion.Conexion" %> 
 <%@page import="itla.edu.black.registrarusuario.Registrar" %> 
 
