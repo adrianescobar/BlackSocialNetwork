@@ -9,10 +9,9 @@ import javax.swing.JOptionPane;
 public class Conexion {
     
     //referencia conexion
-    private static Connection con;
-    private static Conexion instancia = null;
-    
-    private Conexion(){
+   private static Connection con;
+   private static Conexion instancia = null;
+   private Conexion(){
         try{
             Class.forName("com.mysql.jdbc.Driver");   
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/black", "root", "");
