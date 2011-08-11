@@ -15,18 +15,18 @@ public class UpdateProfilePhoto {
             this.con = Conexion.getInstance();
             update = con.getConexion().prepareStatement("update usuario set USER_PHOTO = ? where email = ?");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error Actualizando la foto de perfil");
+            JOptionPane.showMessageDialog(null, "Error Actualizando la foto de perfil 1");
         }
     }
     
     public int updatePhoto(String email,String url){
         int ret = 0;
         try{
-            update.setString(1, email);
-            update.setString(2, url);
+            update.setString(1, url);
+            update.setString(2, email);
             ret = update.executeUpdate();
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error Actualizando la foto de perfil");
+            JOptionPane.showMessageDialog(null, "Error Actualizando la foto de perfil 2");
         }
         return ret;
     }
