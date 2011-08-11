@@ -31,7 +31,7 @@ public class Registrar {
             JOptionPane.showMessageDialog(null, "Error al registrar");
         }
         return p;
-    }
+   }
     
     
 }

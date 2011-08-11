@@ -33,7 +33,6 @@ textarea{
     min-height: 450px;
     background-color: #a7d6ed;
 }
-
 #footer{
     
     height: 50px;
@@ -246,11 +245,13 @@ table {
     height: 70px;
     border:2px solid white;
     
+    
 }
 .news label{
     
     float: right;
     margin:25px;
+    width: 60%;
     
 }
 .news{
@@ -262,7 +263,6 @@ table {
     display: block !important; 
     
 }
-
 #inicio{
     
     padding:10px;
@@ -274,8 +274,6 @@ table {
     width: 120px;
     
 }
-
-
 #contador{
     
     margin-left: 10px;

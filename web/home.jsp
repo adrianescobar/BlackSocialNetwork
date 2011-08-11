@@ -55,9 +55,6 @@
             
             <div id="header">
                 
-                <%= session.getAttribute("con") %>
-                
-                
             </div>
             
             <div id="body">
@@ -104,7 +101,7 @@
                     
                 </div>
                 <!------------------------------------------------------------------------->
-                
+                <!---Menu------------------------------------------------------------------>
                 <div id="menu">
                     
                     
@@ -118,6 +115,7 @@
                 
                 <div id="cuerpo">
                 
+                        <!------------Info--------------------->
                         <div id="divAmigos" name="elementos" class="blokes" align="center">
                             
                             <% 
@@ -171,7 +169,7 @@
                                 </table>
                             
                         </div>
-                        
+                        <!------------Muro--------------------->
                         <div id="muro" name="elementos" class="blokes">
                             
                             <% 
@@ -208,7 +206,7 @@
                             %>
                             
                         </div>
-                            
+                        <!------------Configurar--------------->    
                         <div id="configurar" name="elementos" class="blokes" align="center">
                             
                             <form onsubmit="return false" name="info">
@@ -292,13 +290,13 @@
                             </form>
                             
                         </div>
-                            
+                        <!------------Photos------------------->    
                         <div id="photos" name="elementos" class="blokes">
                             
                             <a href="uploadPhotoPerfil.jsp">Cambiar Photo de Perfil</a>
                             
                         </div>
-                        
+                        <!------------News--------------------->
                         <div id="inicio" name="elementos" class="blokes" align="center">
                             
                                     <div id="newsDiv"></div>
@@ -314,3 +312,7 @@
         
     </body>
 </html>
+<<<<<<< HEAD
+=======
+</jsp:useBean>
+>>>>>>> aae685ab49b6e3c62bdf14818b2c9fbba65afd07

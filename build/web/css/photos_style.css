@@ -2,20 +2,16 @@ body{
     text-transform: capitalize;
     background-color: #333333;
 }
-
 a{
     text-decoration:none;
     color:black;
 }
-
 textarea{
     
     margin-left: 15px;
     resize:none;
     
 }
-
-
 #logoutId{
     float : right;
     text-decoration: none;
@@ -124,20 +120,19 @@ textarea{
     margin:10px;
     
 }
-
 #albunes a div{
     
     width: 100px;
     height: 100px;
     margin:10px;
     float: left;
-    background-image: url('../img/folder2.png');
+    background-image: url('../img/folder_2.png');
     
 }
 #photo_perfil_padre{
     
     width:100%;
-    height: 100%;
+    min-height: 120%;
     background-color: black;
     opacity:.9;
     display: none;
@@ -145,7 +140,6 @@ textarea{
     top:0px;
     left:0px;
 }
-
 #photo_perfil_hijo{
     
     width:300px;
@@ -160,15 +154,13 @@ textarea{
     padding: 80px 20px 20px 20px;
     
 }
-
 #photo_perfil_hijo button{
     
     width:120px;
-    height: 30px;
+    height:30px;
     margin:30px;
     
 }
-
 #albunes a div label{
     
     position: relative;

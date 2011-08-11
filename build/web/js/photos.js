@@ -1,19 +1,19 @@
 function showChange(){
-    alert("entro");
+    
     padre = document.getElementById("photo_perfil_padre");
     hijo = document.getElementById("photo_perfil_hijo");
     
-    if(padre.style.diplay=="block"){
+    if(padre.style.display!="block"){
+    
+        padre.style.display="block";
+        hijo.style.display="block";
+        
+    
+    }else{
         
         padre.style.display="none";
         hijo.style.display="none";
-        alert("entro3");
         
-    }else{
-     
-     padre.style.display="block";
-     hijo.style.display="block";
-     alert("entro5");
         
     }
     
@@ -41,12 +41,11 @@ function imgCheck(value){
     
 }
 
-
 function crearAlbum(){
     
     contenedor = document.getElementById("albunes");
     
-    nombreAlbun = prompt("Nombre de albun ?");
+    nombreAlbun = prompt("Nombre de Album");
     
     alert("crearAlbum.jsp?nombre="+nombreAlbun+"&email="+document.getElementById("page").className+" ");
     

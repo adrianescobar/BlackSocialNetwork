@@ -234,8 +234,10 @@ function news(){
             for(r= 0 ; r<(resultado.length)-1;r++){
                 
                 div = document.createElement("div");
-                div.innerHTML="<div class='news' style=\" display: block \" ><a href='perfil.jsp?email="+resultado[r].split(",")[0]+"'><img src='"+resultado[r].split(",")[2]+"'><label>"+resultado[r].split(",")[0]+"</a></label>\n\
-                                <label>"+resultado[r].split(",")[1]+"</label> </a><div>";
+                div.innerHTML="\
+                <div class='news' style=\" display: block \" >\n\
+                    <a href='perfil.jsp?email="+resultado[r].split(",")[0]+"'><img src='"+resultado[r].split(",")[2]+"'>\n\
+                        <label>"+resultado[r].split(",")[1]+"</label></a><div>";
                 newsDiv.appendChild(div);
                
             }
