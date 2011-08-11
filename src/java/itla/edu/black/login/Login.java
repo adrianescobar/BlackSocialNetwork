@@ -31,7 +31,6 @@ public class Login {
             while(logResultado.next()){
                 logT++;
             }
-            JOptionPane.showMessageDialog(null, logT);
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error en Login 2");
         }

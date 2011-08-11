@@ -8,10 +8,7 @@
     ObtenerNombre nombre = new ObtenerNombre();
     
     Login log = new Login();
-    
     int resultados = log.loginSession(request.getParameter("email"),request.getParameter("pass"));
-    System.out.println(resultados);
-    out.println(resultados);
     
     if(resultados>0){
     
