@@ -4,22 +4,24 @@
  */
 package itla.edu.black.data.photos;
 
-import itla.edu.black.conexion.Conexion;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import itla.edu.black.data.photos.interfaz.InterfazBorrarFoto;
 
 /**
  *
  * @author Dragon
  */
 public class BorrarFoto {
-    private Conexion con;
-    private PreparedStatement delete = null;
-    private 
-    public BorrarFoto(){
+    private InterfazBorrarFoto ibf;
+    
+    private BorrarFoto(){
         
     }
+    public BorrarFoto(InterfazBorrarFoto ibf){
+        this.ibf = ibf;
+    }
     
+    public int BorrarFoto(String id_1){
+       int ret = ibf.borrarPhoto(id_1);
+       return ret;
+    }
 }

@@ -8,8 +8,7 @@ import itla.edu.black.conexion.Conexion;
 import itla.edu.black.data.photos.interfaz.InterfazBorrarFoto;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,22 +21,25 @@ public class DefineBorrarFoto implements InterfazBorrarFoto{
     public DefineBorrarFoto(){
         try {
             con = Conexion.getInstance();
-            delete = con.getConexion().prepareStatement("");
+            delete = con.getConexion().prepareStatement("delete from photos where ID_PHOTO = ?;");
         } catch (SQLException ex) {
-            Logger.getLogger(DefineBorrarFoto.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Eror borrando foto de la bd 2");
         }
     }
 
     @Override
     public int borrarPhoto(String id_1) {
-        
-        return 0;
+        int ret = 0;
+        try {
+            int id_2 = Integer.parseInt(id_1);
+            delete.setInt(1, id_2);
+            ret = delete.executeUpdate();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Eror borrando foto de la bd 2");
+        }
+        return ret;
     }
 
-    @Override
-    public int borrarPhoto(String id_1, String id_2, String id_3) {
-        
-        return 0;
-    }
     
 }

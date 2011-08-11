@@ -10,5 +10,4 @@ package itla.edu.black.data.photos.interfaz;
  */
 public interface InterfazBorrarFoto {
     public int borrarPhoto(String id_1);
-    public int borrarPhoto(String id_1, String id_2, String id_3);
 }
