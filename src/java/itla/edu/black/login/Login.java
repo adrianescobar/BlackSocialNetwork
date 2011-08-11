@@ -33,7 +33,7 @@ public class Login {
             }
             JOptionPane.showMessageDialog(null, logT);
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error en Login 2"+e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error en Login 2");
         }
         return logT;
     }
