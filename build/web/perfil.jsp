@@ -82,11 +82,10 @@
                 
                 </div>
                 
+                <!--Ultimo Estado-->
                 <div id="estado">
                     
                     <%
-                    out.println(userData[0]+userData[1]+userData[2]);
-                    
                         LastEstate last = new LastEstate(con);
                         
                         ArrayList<String[]> ultimoEstado = last.lastEstate((String)session.getAttribute("usuario"),1);
@@ -94,18 +93,25 @@
                         try{
                             
                             out.println(ultimoEstado.get(0)[0]);
-                        //out.println(ultimoEstado.get(0)[0].toString());
-                                               }catch(Exception e){out.println(e);}
+                            
+                        }
+                        catch(Exception e){
+                        
+                        }
                     %>
                     
                 </div>
                 
-                <div class="clear"><hr>
+                <div class="clear">
+                    
+                    <hr>
+                    
+                    
                 </div>
+                    
                 <!------------------------------------------------------------------------->
                 <div id="menu">
                     
-                    <% out.println(userData[0]); %>
                     <a href="home.jsp"><div id="" class="item">Inicio</div></a>
                     <a href="javascript:void()"><div id="" class="item" onclick="unshowDiv()">Perfil</div></a>
                     <a href="javascript:void()"><div id="" class="item" onclick="showMenu('divAmigos')">Amigos</div></a>
@@ -119,6 +125,8 @@
                             
                             
                         </div>
+                    
+                        <!-- Muro -->
                         
                         <div id="muro" name="elementos" class="blokes">
                             

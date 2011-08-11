@@ -33,6 +33,7 @@ public class GetAlbuns {
                 datos[0] = result.getString(1);
                 datos[1] = result.getString(2);
                 datos[2] = result.getString(3);
+                
                 albunes.add(datos);
             
             }

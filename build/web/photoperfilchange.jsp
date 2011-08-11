@@ -25,6 +25,7 @@
     String nombre = photoStorage.guardarPhoto(request.getParameter("email"))+"-Perfil";
 
     FileItemFactory factory = new DiskFileItemFactory();
+    
     ServletFileUpload upload = new ServletFileUpload(factory);
 
         List items = upload.parseRequest(request);
@@ -41,8 +42,11 @@
                String file ="";
                
                file= application.getRealPath("/")+"data-photos\\";
-               out.println(nombre);
+               
+               out.println(file+nombre+"."+ext);
+               
                   File fichero = new File(file+nombre+"."+ext);
+                  
                   uploaded.write(fichero);
 
                   String resultado = dbPhotoSave.guardar(null,request.getParameter("email"),"data-photos/"+nombre+"."+ext);

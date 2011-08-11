@@ -7,8 +7,6 @@
 <%@page import="itla.edu.black.conexion.Conexion"%>
 <%@page import="itla.edu.black.comentarios.ShowComentario"%>
 
-<jsp:useBean id="conexion" class="itla.edu.black.conexion.Conexion">
-
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -60,9 +58,6 @@
             
             <div id="header">
                 
-                <%= session.getAttribute("con") %>
-                
-                
             </div>
             
             <div id="body">
@@ -109,7 +104,7 @@
                     
                 </div>
                 <!------------------------------------------------------------------------->
-                
+                <!---Menu------------------------------------------------------------------>
                 <div id="menu">
                     
                     
@@ -123,6 +118,7 @@
                 
                 <div id="cuerpo">
                 
+                        <!------------Info--------------------->
                         <div id="divAmigos" name="elementos" class="blokes" align="center">
                             
                             <% 
@@ -176,7 +172,7 @@
                                 </table>
                             
                         </div>
-                        
+                        <!------------Muro--------------------->
                         <div id="muro" name="elementos" class="blokes">
                             
                             <% 
@@ -213,7 +209,7 @@
                             %>
                             
                         </div>
-                            
+                        <!------------Configurar--------------->    
                         <div id="configurar" name="elementos" class="blokes" align="center">
                             
                             <form onsubmit="return false" name="info">
@@ -297,13 +293,13 @@
                             </form>
                             
                         </div>
-                            
+                        <!------------Photos------------------->    
                         <div id="photos" name="elementos" class="blokes">
                             
                             <a href="uploadPhotoPerfil.jsp">Cambiar Photo de Perfil</a>
                             
                         </div>
-                        
+                        <!------------News--------------------->
                         <div id="inicio" name="elementos" class="blokes" align="center">
                             
                                     <div id="newsDiv"></div>

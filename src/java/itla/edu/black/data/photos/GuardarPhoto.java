@@ -37,8 +37,9 @@ public class GuardarPhoto {
             
             while(photo_id.next()){
             
+                
                 id = photo_id.getString(1);
-            
+               
             }
             
             dir = nombreQ+"-"+id;

@@ -53,9 +53,12 @@
             
             
             <!-------------------------------------------------------------->
+            <!--Photo de perfil-->
             <div id="photo_perfil_padre" onclick="showChange()">
                 
                 </div>
+            
+            <!--DivModal Hijo-->
                 <div id="photo_perfil_hijo" align="center">
                     
                     <form enctype="multipart/form-data" action="photoperfilchange.jsp?id=nulo&email=<%=request.getParameter("user")%>" method="post" name="formulario" onsubmit="return imgCheck(document.formulario.photoP.value)">
@@ -78,11 +81,13 @@
                 <a id="logoutId" href="" onclick="logout()"><%= session.getAttribute("userName")%> LogOut</a>
                 
                 
-                <div id="photo_perfil"><img src="<%= userData[1]%> " width="90%">
+                <div id="photo_perfil">
+                    
+                    <img src="<%= userData[1]%> " width="90%">
                 
                 </div>
                 
-                
+                <!--Div Clear-->
                 <div class="clear">
                     
                 </div>
@@ -109,7 +114,7 @@
                             
                             for(int o = 0;o<albunes.size();o++){
                                 
-                                out.println("<a href='photos_details.jsp?id="+albunes.get(o)[0]+"&email="+userData[0]+"' class='albunes_uno'><div>");
+                                out.println("<a href='photos_details.jsp?id="+albunes.get(o)[0]+"&email="+userData[0]+"'><div>");
                                 out.println("<label style='clear:both'>"+albunes.get(o)[1]+"</label>");
                                 out.println("</div></a>");
                             
@@ -120,7 +125,17 @@
                         <div style="clear:both"></div>
                         </div>
                         
-                         <button onclick="crearAlbum()">New Albun</button>   
+                        <% if(session.getAttribute("usuario").equals(request.getParameter("user")))
+                            {
+                        
+                        %>
+                        
+                         <button onclick="crearAlbum()">New Albun</button> 
+                        <% 
+                        
+                            } 
+                            
+                        %>
                          
                 </div>
                  
