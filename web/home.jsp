@@ -7,8 +7,6 @@
 <%@page import="itla.edu.black.conexion.Conexion"%>
 <%@page import="itla.edu.black.comentarios.ShowComentario"%>
 
-<jsp:useBean id="conexion" class="itla.edu.black.conexion.Conexion">
-
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -316,4 +314,3 @@
         
     </body>
 </html>
-</jsp:useBean>

@@ -21,8 +21,8 @@ public class LastEstate {
     }
     
     
-    public ArrayList lastEstate(String id,int elementos){
-        ArrayList resultado = new ArrayList();
+    public ArrayList<String[]> lastEstate(String id,int elementos){
+        ArrayList<String[]> resultado = new ArrayList();
         try{
             consulta.setString(1, id);
             consulta.setInt(2, elementos);

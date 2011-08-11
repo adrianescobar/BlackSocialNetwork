@@ -27,10 +27,11 @@ public class Login {
         try{
             consulta.setString(1, mail);
             consulta.setString(2, pass);
-            JOptionPane.showMessageDialog(null, consulta.toString());
             ResultSet logResultado = consulta.executeQuery();        
-            logT = logResultado.getRow();
-            
+            while(logResultado.next()){
+                logT++;
+            }
+            JOptionPane.showMessageDialog(null, logT);
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error en Login 2"+e.getMessage());
         }
