@@ -13,9 +13,9 @@ public class AddComentario {
     public AddComentario(){
         this.con = Conexion.getInstance();
         try {
-            this.insert = con.getConexion().prepareStatement("insert into comentario_estado(id_estado,id_usuario,comentario) values(?,(select id_usuario from usuario where email = ?), ?");
+            this.insert = con.getConexion().prepareStatement("insert into comentario_estado(id_estado,id_usuario,comentario) values(?,(select id_usuario from usuario where email = ?), ?)");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al agregar comentario");
+            JOptionPane.showMessageDialog(null, "Error al agregar comentario 1");
         }
     }
      
@@ -23,12 +23,12 @@ public class AddComentario {
         int resultado = 0;
         try{
             insert.setString(1, id);
-            insert.setString(2, comentario);
-            insert.setString(3, usuario);
+            insert.setString(2, usuario);
+            insert.setString(3, comentario);
             resultado = insert.executeUpdate();
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error al agregar comentario");
+            JOptionPane.showMessageDialog(null, "Error al agregar comentario 2"+e.getMessage());
         }
         return resultado;
     }
