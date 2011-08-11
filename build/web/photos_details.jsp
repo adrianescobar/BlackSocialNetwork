@@ -103,7 +103,7 @@
                             
                             for(int o = 0;o<phtoos.size();o++){
                                 
-                                out.println("<div><a href='"+phtoos.get(o)[0]+"' rel=\"lightbox[photos]\">");
+                                out.println("<div><a href='javascript:void()' id='borrarImagen' onclick=\"borrarImagenDB('"+phtoos.get(o)[0]+"');\">b</a><a href='"+phtoos.get(o)[0]+"' rel=\"lightbox[photos]\">");
                                 out.println("<img src='"+phtoos.get(o)[0] +"'>");
                                 out.println("</a></div>");
                             

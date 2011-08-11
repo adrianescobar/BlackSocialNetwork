@@ -172,4 +172,24 @@ textarea{
     
 }
 
+#borrarImagen{
+    
+    float: left;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    position: absolute;
+    z-index: 1;
+    margin-left: 10px;
+    margin-top: 10px;
+    
+}
+
+#borrarImagen:hover{
+    
+    color:white;
+    background-color: blue;
+    
+}
+
 

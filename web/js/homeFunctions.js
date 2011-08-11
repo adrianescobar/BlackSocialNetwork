@@ -229,7 +229,7 @@ function news(){
             newsDiv.style.display="block";
             newsDiv.innerHTML="";
             
-            resultado = newsHTTP.responseText.split("_");
+            resultado = newsHTTP.responseText.split("^");
             
             for(r= 0 ; r<(resultado.length)-1;r++){
                 

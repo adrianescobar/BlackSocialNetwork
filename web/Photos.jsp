@@ -93,8 +93,16 @@
                 <div id="menu">
                     
                     
-                    <a href="home.jsp"><div id="" class="item">Perfil</div></a>
+                    <a href="perfil.jsp?email=<%=request.getParameter("user")%>"><div id="" class="item">Perfil</div></a>
+                    
+                    <% 
+                        if(session.getAttribute("usuario").equals(request.getParameter("user")))
+                        {
+                    %>
+                    
                     <a href="javascirpt:void()" onclick="showChange()"><div id="" class="item">Photo Perfil</div></a>
+                    
+                    <% } %>
                     
                 </div>
                 

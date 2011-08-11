@@ -13,7 +13,7 @@
     for(int i = 0; i<resultado.size();i++ ){
     
         out.println(resultado.get(i)[0]+","+resultado.get(i)[1]+","+resultado.get(i)[2]+","+resultado.get(i)[3]);
-        out.println("_");
+        out.println("^");
     
     }
 

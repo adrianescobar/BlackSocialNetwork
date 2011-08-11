@@ -38,3 +38,23 @@ function imgCheck(value){
     
 }
 
+function borrarImagenDB(idNombre){
+    
+    idNombre = idNombre.split("/")[1];
+    
+    borrar = confirm("Seguro de Borrar?");
+    
+    if(borrar){
+        
+        alert(id1 = idNombre.split("-")[0]);
+        alert(id2 = idNombre.split("-")[1]);
+        alert(id3 =(idNombre.split("-")[2]).split(".")[0]);
+        
+        
+        window.location="borrarPhoto.jsp?id_1="+id1+"&id_2="+id2+"&id_3="+id3;
+        
+        
+    }
+    
+}
+

@@ -85,8 +85,6 @@
                     
                     <%
                     LastEstate last = new LastEstate();
-                    out.println(userData[0]+userData[1]+userData[2]);
-                    
                         
                         ArrayList<String[]> ultimoEstado = last.lastEstate((String)session.getAttribute("usuario"),1);
                         
@@ -114,7 +112,6 @@
                     
                     <a href="home.jsp"><div id="" class="item">Inicio</div></a>
                     <a href="javascript:void()"><div id="" class="item" onclick="unshowDiv()">Perfil</div></a>
-                    <a href="javascript:void()"><div id="" class="item" onclick="showMenu('divAmigos')">Amigos</div></a>
                     <a href="Photos.jsp?user=<%= userData[0] %>"><div class="item">Photos</div></a>
                     
                 </div>
