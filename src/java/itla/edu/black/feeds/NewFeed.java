@@ -1,36 +1,32 @@
 package itla.edu.black.feeds;
 
-import java.sql.Connection;
-import java.sql.Statement;
+import itla.edu.black.conexion.Conexion;
+import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
 
 public class NewFeed {
     
-    Connection con;
+    private Conexion con;
+    private PreparedStatement insert = null;
     
-    public NewFeed(Connection con){
-    
-        this.con = con;
-    
-    }
-    
-    public String newFeed(String id, String feed){
-        
-        String error="";
-    
-        try{
-            Statement newEstado = (Statement) con.createStatement();
-
-            error = "" + newEstado.executeUpdate("insert into estados(id_usuario,estado,fecha) values((select id_usuario from usuario where email = '"+id+"'),'"+feed+"',CURDATE()) ");
-
-        }catch(Exception e){
-            
-            error+=e;
-        
+    public NewFeed(){
+        try {
+            this.con = Conexion.getInstance();
+            insert = con.getConexion().prepareStatement("insert into estados(id_usuario,estado,fecha) values((select id_usuario from usuario where email = ?),?,CURDATE())");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error en new feed");
         }
-        
-        return error;
-    
     }
     
-    
+    public int newFeed(String id, String feed){
+        int error = 0;
+        try{
+            insert.setString(1, id);
+            insert.setString(2, feed);
+            error = insert.executeUpdate();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error en new feed");
+        }
+        return error;
+    }
 }

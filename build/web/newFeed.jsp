@@ -4,7 +4,7 @@
 <%@page session="true" import="itla.edu.black.conexion.Conexion"%>
 <%
 
-    String funciono = "";
+    int funciono = 0;
 
     NewFeed feed =  new NewFeed();
     
