@@ -1,43 +1,39 @@
 
 package itla.edu.black.login;
 
-import java.sql.Connection;
-import java.sql.Statement;
+import itla.edu.black.conexion.Conexion;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 
 public class Login {
     
-    Connection con;
+    private Conexion con;
+    private PreparedStatement consulta;
     
-    public Login(Connection con){
-    
-        this.con = con;
-    
+    public Login(){
+        try {
+            this.con = Conexion.getInstance();
+            consulta = con.getConexion().prepareStatement("select * from usuario where email = ? and clave = ?");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en Login 1");
+        }
     }
     
     public int loginSession(String mail, String pass){
-    
         int logT = 0;
-        
         try{
-        
-            Statement log = (Statement) con.createStatement();
-            
-            ResultSet logResultado = log.executeQuery("select * from usuario where email='"+mail+"' and clave='"+pass+"'");
-            
-            logResultado.last();
-            
+            consulta.setString(1, mail);
+            consulta.setString(2, pass);
+            JOptionPane.showMessageDialog(null, consulta.toString());
+            ResultSet logResultado = consulta.executeQuery();        
             logT = logResultado.getRow();
             
-            return logT;
-        
         }catch(Exception e){
-        
-        
+            JOptionPane.showMessageDialog(null, "Error en Login 2"+e.getMessage());
         }
-        
-        
         return logT;
     }
     

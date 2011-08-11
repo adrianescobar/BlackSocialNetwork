@@ -50,9 +50,7 @@
 
         }
        
-        Connection con = Conexion.getConexion();
-
-            UserData data = new UserData(con);
+            UserData data = new UserData();
 
             String[] userData = data.getUserData(request.getParameter("email"));
 
@@ -99,7 +97,7 @@
                             
                         <%
                         
-                            GetPhotos albun = new GetPhotos(con);
+                            GetPhotos albun = new GetPhotos();
                             
                             ArrayList<String[]> phtoos = albun.getPhotos(request.getParameter("id"));
                             

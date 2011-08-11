@@ -6,9 +6,7 @@
 <%
     //Conexion con = new Conexion();
     
-    Connection con = Conexion.getConexion(); 
-
-    AddComentario add = new AddComentario(con);
+    AddComentario add = new AddComentario();
     
     out.println(add.addComentario(request.getParameter("id"),request.getParameter("comentario"),request.getParameter("usuario")));
     

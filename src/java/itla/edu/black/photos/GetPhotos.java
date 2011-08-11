@@ -1,19 +1,25 @@
 
 package itla.edu.black.photos;
 
-import java.sql.Connection;
+import itla.edu.black.conexion.Conexion;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class GetPhotos {
     
-    Connection con;
+    private Conexion con;
+    private PreparedStatement consulta = null;
     
-    public GetPhotos(Connection con){
-    
-        this.con = con;
-    
+    public GetPhotos(){
+        try {
+            this.con = Conexion.getInstance();
+            consulta = con.getConexion().prepareStatement("select url,id_photo from photos where id_album = ?");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error Obteniendo foto");
+        }
     }
     
     public ArrayList getPhotos(String id_album){
@@ -21,10 +27,8 @@ public class GetPhotos {
         ArrayList photos = new ArrayList();
         
         try{
-        
-            Statement query = con.createStatement();
-            
-            ResultSet resultado = query.executeQuery("select url,id_photo from photos where id_album = '"+id_album+"' ");
+            consulta.setString(1, id_album);
+            ResultSet resultado = consulta.executeQuery();
             
             while(resultado.next()){
             
@@ -38,11 +42,8 @@ public class GetPhotos {
             }
         
         }catch(Exception e){
-        
+            JOptionPane.showMessageDialog(null, "Error Obteniendo foto");
         }
-        
         return photos;
-    
     }
-    
 }

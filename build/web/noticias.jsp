@@ -6,9 +6,7 @@
 
 <%
 
-    Connection con = Conexion.getConexion();
-    
-    Noticias news = new Noticias(con);
+    Noticias news = new Noticias();
     
     ArrayList<String[]> resultado = news.news();
     

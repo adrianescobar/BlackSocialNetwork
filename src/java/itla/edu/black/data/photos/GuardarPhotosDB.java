@@ -1,53 +1,45 @@
 package itla.edu.black.data.photos;
 
-import java.sql.Connection;
+import itla.edu.black.conexion.Conexion;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 public class GuardarPhotosDB {
     
-    Connection con;
+    private Conexion con;
+    private PreparedStatement consulta, insert = null;
     
-    public GuardarPhotosDB(Connection con){
-    
-        this.con = con;
-    
+    public GuardarPhotosDB(){
+        try {
+            this.con = Conexion.getInstance();
+            consulta = con.getConexion().prepareStatement("select id_album from albums where id_usuario = (select id_usuario from usuario where email = ?) and nombre_album = 'Photos Perfil'");
+            insert = con.getConexion().prepareStatement("insert into photos(id_album,id_usuario,url) values(?,(select id_usuario from usuario where email = ?),?");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error Guardando photos en bd");
+        }
     }
     
-    public String guardar(String id,String email,String url){
-    
-        String insert= "";
-        
-        
+    public int guardar(String id,String email,String url){
+        int ret = 0;
         try{
-            
             if(id==null){
-                
-                Statement getId = con.createStatement();
-
-                ResultSet idResultset = getId.executeQuery(" select id_album from albums where id_usuario = (select id_usuario from usuario where email = '"+email+"') and nombre_album = 'Photos Perfil' ");
-
+                consulta.setString(1, email);
+                ResultSet idResultset = consulta.executeQuery();
                 while(idResultset.next()){
-                
                     id = idResultset.getString(1);
-                    
-                
                 }
-               
             }
             int id2 = Integer.parseInt(id);
-        
-            Statement query = con.createStatement();
-            
-            insert += ""+query.executeUpdate("insert into photos(id_album,id_usuario,url) values("+id2+",(select id_usuario from usuario where email = '"+email+"'),'"+url+"') ");
-        
+            insert.setInt(1, id2);
+            insert.setString(2, email);
+            insert.setString(3, url);
+            ret = insert.executeUpdate();
         }catch(Exception e){
-    
-            insert += ""+e;
-            
+            JOptionPane.showMessageDialog(null, "Error Guardando photos en bd");
         }
-        
-        return insert;
+        return ret;
     }
     
 }

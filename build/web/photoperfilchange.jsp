@@ -13,13 +13,11 @@
 <%
 
 
-    Connection con = Conexion.getConexion();
+    GuardarPhoto photoStorage = new GuardarPhoto();
     
-    GuardarPhoto photoStorage = new GuardarPhoto(con);
+    GuardarPhotosDB dbPhotoSave = new GuardarPhotosDB();
     
-    GuardarPhotosDB dbPhotoSave = new GuardarPhotosDB(con);
-    
-    UpdateProfilePhoto update = new UpdateProfilePhoto(con);
+    UpdateProfilePhoto update = new UpdateProfilePhoto();
     
     
     String nombre = photoStorage.guardarPhoto(request.getParameter("email"))+"-Perfil";
@@ -45,7 +43,7 @@
                   File fichero = new File(file+nombre+"."+ext);
                   uploaded.write(fichero);
 
-                  String resultado = dbPhotoSave.guardar(null,request.getParameter("email"),"data-photos/"+nombre+"."+ext);
+                  int resultado = dbPhotoSave.guardar(null,request.getParameter("email"),"data-photos/"+nombre+"."+ext);
                  
                   
                   update.updatePhoto(request.getParameter("email"), "data-photos/"+nombre+"."+ext);

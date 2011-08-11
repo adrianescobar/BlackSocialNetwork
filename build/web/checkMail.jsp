@@ -4,9 +4,7 @@
 <%@page import="itla.edu.black.mail.ValidarMail"%>
 <%
     
-    Connection con  = Conexion.getConexion();
-    
-    ValidarMail mail = new ValidarMail(con);
+    ValidarMail mail = new ValidarMail();
     
     int disponivilidad = mail.checkMail(request.getParameter("email"));
     

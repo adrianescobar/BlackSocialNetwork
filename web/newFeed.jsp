@@ -6,9 +6,7 @@
 
     String funciono = "";
 
-    Connection con = Conexion.getConexion();
-    
-    NewFeed feed =  new NewFeed(con);
+    NewFeed feed =  new NewFeed();
     
     funciono = feed.newFeed(request.getParameter("id"),request.getParameter("feed"));
     

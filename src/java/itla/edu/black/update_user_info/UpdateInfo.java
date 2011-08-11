@@ -1,35 +1,41 @@
 package itla.edu.black.update_user_info;
 
-import java.sql.Connection;
-import java.sql.Statement;
+import itla.edu.black.conexion.Conexion;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 
 public class UpdateInfo {
     
-    Connection con;
-    
-    public UpdateInfo(Connection con){
-    
-        this.con = con;
-    
+    private Conexion con;
+    private PreparedStatement update = null;
+    public UpdateInfo(){
+        try {
+            this.con = Conexion.getInstance();
+            this.update = con.getConexion().prepareStatement("update usuario set nombre = ?, apellidos = ?, clave = ?, sexo = ?, estado = ? where email = ? and clave = ?");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al actualizar la informacion");
+        }
     }
     
-    public String saveInfo(String nombre,String apellido,String oldpass,String newpass,String estado,String sexo,String mail){
-    
-        String algo ="0";
-        
+    public int saveInfo(String nombre,String apellido,String oldpass,String newpass,String estado,String sexo,String mail){
+        int ret = 0;
         try{
-        
-            Statement save = (Statement) con.createStatement();
-            
-            algo = ""+save.executeUpdate("update usuario set nombre='"+nombre+"', apellidos='"+apellido+"', clave='"+newpass+"', sexo='"+sexo+"', estado='"+estado+"' where email='"+mail+"' and clave='"+oldpass+"' ");
+            update.setString(1, nombre);
+            update.setString(2, apellido);
+            update.setString(3, oldpass);
+            update.setString(4, newpass);
+            update.setString(5, estado);
+            update.setString(6, sexo);
+            update.setString(7, mail);
+            ret = update.executeUpdate();
         
         }catch(Exception e){
-        
-            algo+=e;
+            JOptionPane.showMessageDialog(null, "Error al actualizar la informacion");
         }
         
-        return algo;
+        return ret;
     
     }
     
