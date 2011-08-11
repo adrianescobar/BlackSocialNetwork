@@ -12,10 +12,9 @@
  <%
             String nombre = "";
             
-            Connection con = Conexion.getConexion();
             
-            GuardarPhoto photoG = new GuardarPhoto(con);
-            GuardarPhotosDB photosDB = new GuardarPhotosDB(con);
+            GuardarPhoto photoG = new GuardarPhoto();
+            GuardarPhotosDB photosDB = new GuardarPhotosDB();
             
             nombre = photoG.guardarPhoto(request.getParameter("email"))+"-"+request.getParameter("id");
             
@@ -39,7 +38,7 @@
                   File fichero = new File(file+nombre+"."+ext);
                   uploaded.write(fichero);
                   
-                  String resultado = photosDB.guardar(request.getParameter("id"),request.getParameter("email"),"data-photos/"+nombre+"."+ext);
+                  int resultado = photosDB.guardar(request.getParameter("id"),request.getParameter("email"),"data-photos/"+nombre+"."+ext);
                   
                   //out.println(resultado);
                   

@@ -1,37 +1,40 @@
 package itla.edu.black.registrarusuario;
 
-import java.sql.Connection;
-import java.sql.Statement;
+import itla.edu.black.conexion.Conexion;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 public class Registrar {
     
-    private Connection con;
+    private Conexion con;
+    private PreparedStatement insert = null;
     
-    public Registrar(Connection conexion){
-        
-        this.con = conexion;
-    
+    public Registrar(){
+        try {
+            this.con = Conexion.getInstance();
+            this.insert = con.getConexion().prepareStatement("insert into usuario(Nombre,Apellidos,clave,Email) values(?,?,?,?);");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al registrar");
+        }
     }
     
-    public String registrar(String nombre, String apellido,String clave,String mail){
-    
-        int p = 66;
-        
+    public int registrar(String nombre, String apellido,String clave,String mail){
+        int p = 0;
         try{
-            
-        
-            Statement insert = (Statement)con.createStatement();
-            
-            p= insert.executeUpdate("insert into usuario(Nombre,Apellidos,clave,Email) values('"+nombre+"','"+apellido+"','"+clave+"','"+mail+"') ");
-    
-            return ""+p;
-        
+            insert.setString(1, nombre);
+            insert.setString(2, apellido);
+            insert.setString(3, clave);
+            insert.setString(4, mail);
+            p = insert.executeUpdate();
         }catch(Exception e){
-        
-            return ""+e;
-        
+            JOptionPane.showMessageDialog(null, "Error al registrar");
         }
+<<<<<<< HEAD
         
+=======
+        return p;
+>>>>>>> bed834779b4af3dae25ee83c3f9326faa9475539
     }
     
     

@@ -1,18 +1,24 @@
 
 package itla.edu.black.data.photos;
 
-import java.sql.Connection;
+import itla.edu.black.conexion.Conexion;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 public class GuardarPhoto {
     
-    Connection con;
-    
-    public GuardarPhoto(Connection con){
-    
-        this.con = con;
-    
+    private Conexion con;
+    private PreparedStatement consulta1 = null;
+    public GuardarPhoto(){
+        try {
+            this.con = Conexion.getInstance();
+            consulta1 = con.getConexion().prepareStatement("select id_usuario from usuario where email = ?");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error Guardando foto");
+        }
     }
     
     public String guardarPhoto(String email){
@@ -22,37 +28,28 @@ public class GuardarPhoto {
         String id = "";
     
         try{
-        
-            Statement query = con.createStatement();
-            
-            ResultSet nombre = query.executeQuery("select id_usuario from usuario where email = '"+email+"' ");
+            Statement query = con.getConexion().createStatement();
+            consulta1.setString(1, email);
+            ResultSet nombre = consulta1.executeQuery();
             
             while(nombre.next()){
-            
                 nombreQ=nombre.getString(1);
-            
             }
-            
             ResultSet photo_id = query.executeQuery("select (id_photo)+1 from photos order by id_photo desc limit 1 ");
-            
             while(photo_id.next()){
+<<<<<<< HEAD
             
                 
                 id = photo_id.getString(1);
                
+=======
+                id = photo_id.getString(1);
+>>>>>>> bed834779b4af3dae25ee83c3f9326faa9475539
             }
-            
             dir = nombreQ+"-"+id;
-            
-        
         }catch(Exception e){
-        
-            dir = e+"";
-            
+           JOptionPane.showMessageDialog(null, "Error Guardando foto");
         }
-        
-        
         return dir;
     }
-    
 }

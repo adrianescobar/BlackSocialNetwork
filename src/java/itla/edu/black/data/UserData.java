@@ -1,17 +1,15 @@
 package itla.edu.black.data;
 
-import java.sql.Connection;
+import itla.edu.black.conexion.Conexion;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class UserData {
     
-    Connection con;
+    private Conexion con;
     
-    public UserData(Connection con){
-    
-        this.con = con;
-        
+    public UserData(){
+        this.con = Conexion.getInstance();
     }
     
     public String[] getUserData(String email){
@@ -20,7 +18,7 @@ public class UserData {
         
         try{
         
-            Statement getData = con.createStatement();
+            Statement getData = con.getConexion().createStatement();
             
             ResultSet query = getData.executeQuery("select email,user_photo,nombre from usuario where email = '"+email+"' ");
             
@@ -46,7 +44,7 @@ public class UserData {
         
         try{
         
-            Statement getData = con.createStatement();
+            Statement getData = con.getConexion().createStatement();
             
             ResultSet query = getData.executeQuery("select email,user_photo,nombre,sexo,estado from usuario where email = '"+email+"' ");
             

@@ -1,33 +1,31 @@
 package itla.edu.black.noticias;
 
-import java.sql.Connection;
+import itla.edu.black.conexion.Conexion;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 
 public class Noticias {
     
-    Connection con;
-    
-    public Noticias(Connection con){
-    
-        this.con = con;
-    
+    private Conexion con;
+    private Statement noticias = null;
+    public Noticias(){
+        try {
+            this.con = Conexion.getInstance();
+            this.noticias = con.getConexion().createStatement();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error consultado noticias");
+        }
     }
     
     public ArrayList news(){
-    
         ArrayList resultado = new ArrayList();
-        
         String query = "select email,nombre from usuario ";
-        
         try{
-        
-            Statement noticias = (Statement) con.createStatement();
-            
             ResultSet result = noticias.executeQuery("select email,nombre,user_photo,id_usuario from usuario ");
-            
             while(result.next()){
             
                 String[] rows = {"","","",""};
@@ -38,18 +36,9 @@ public class Noticias {
                 
                 resultado.add(rows);   
             }
-        
         }catch(Exception e){
-        
-            String errore[] = {"",""};
-            errore[0] = ""+e;
-            errore[1] = query;
-            
-            resultado.add(errore);
-        
+            JOptionPane.showMessageDialog(null, "Error consultado noticias");
         }
-    
-        
         return resultado;
     }
     

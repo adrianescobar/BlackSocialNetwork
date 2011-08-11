@@ -4,47 +4,38 @@
  */
 package itla.edu.black.nombre;
 
-import java.sql.Connection;
-import java.sql.Statement;
+import itla.edu.black.conexion.Conexion;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 
 public class ObtenerNombre {
     
-    Connection con;
+    private Conexion con;
+    private PreparedStatement consulta;
     
-    public ObtenerNombre(Connection con){
-    
-        this.con = con;
-        
+    public ObtenerNombre(){
+        try {
+            this.con = Conexion.getInstance();
+            consulta = con.getConexion().prepareStatement("select nombre,USER_PHOTO from usuario where email = ?");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error Obteniendo nombre");
+        }
     }
-     
     public String[] getNombre(String email){
-    
         String[] nombreUsuario = {"",""};
-        
         try{
-        
-           Statement getNombre = (Statement) con.createStatement();
-           
-           ResultSet resultadoNombre = getNombre.executeQuery("select nombre,USER_PHOTO from usuario where email = '"+email+"' ");
-           
-           
-           
-           while(resultadoNombre.next()){
-           
+            consulta.setString(1, email);
+            ResultSet resultadoNombre = consulta.executeQuery();
+            while(resultadoNombre.next()){
                nombreUsuario[0] = resultadoNombre.getString("nombre");
                nombreUsuario[1] = resultadoNombre.getString("USER_PHOTO");
-           
            }
-        
         }catch(Exception e){
-        
+            JOptionPane.showMessageDialog(null, "Error Obteniendo nombre");
         }
-        
         return nombreUsuario;
-    
     }
-    
-    
 }

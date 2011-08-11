@@ -5,15 +5,12 @@
 <%@page session="true" import="itla.edu.black.login.Login"%>
 
 <%
-
-    Connection con = Conexion.getConexion();
+    ObtenerNombre nombre = new ObtenerNombre();
     
-    ObtenerNombre nombre = new ObtenerNombre(con);
-    
-    Login log = new Login(con);
+    Login log = new Login();
     
     int resultados = log.loginSession(request.getParameter("email"),request.getParameter("pass"));
-
+    System.out.println(resultados);
     out.println(resultados);
     
     if(resultados>0){
@@ -23,7 +20,7 @@
         sesion.setAttribute("usuario",request.getParameter("email"));
         sesion.setAttribute("userName",nombre.getNombre(request.getParameter("email"))[0]);
         sesion.setAttribute("USER_PHOTO",nombre.getNombre(request.getParameter("email"))[1]);
-        sesion.setAttribute("con",Conexion.getConexion());
+        sesion.setAttribute("con",Conexion.getInstance().getConexion());
 
         response.sendRedirect("home.jsp");
     }

@@ -44,10 +44,7 @@
                 response.sendRedirect("index.jsp");
 
         }
-        
-        Connection con =Conexion.getConexion(); 
-        
-        UserData data = new UserData(con);
+        UserData data = new UserData();
 
             String[] userData = data.getUserData((String)session.getAttribute("usuario"));
 
@@ -91,7 +88,7 @@
                     
                         
                         
-                        LastEstate last = new LastEstate(con);
+                        LastEstate last = new LastEstate();
                         
                         ArrayList<String[]> ultimoEstado = last.lastEstate((String)session.getAttribute("usuario"),1);
                         
@@ -177,7 +174,7 @@
                             
                             <% 
                             
-                                ShowComentario show = new ShowComentario(con);
+                                ShowComentario show = new ShowComentario();
                             
                                 ArrayList<String[]> estados = last.lastEstate((String)session.getAttribute("usuario"),20);
                                 
@@ -315,3 +312,4 @@
         
     </body>
 </html>
+</jsp:useBean>

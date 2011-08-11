@@ -5,11 +5,9 @@
 
 <%
     
-    Connection con = Conexion.getConexion();
+    Registrar registro = new Registrar();
     
-    Registrar registro = new Registrar(con);
-    
-   String respuesta = registro.registrar(request.getParameter("nombre"),
+   int respuesta = registro.registrar(request.getParameter("nombre"),
                                 request.getParameter("apellido"),
                                 request.getParameter("clave"),
                                 request.getParameter("email"));

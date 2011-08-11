@@ -4,11 +4,9 @@
 <%@page session="true" import="itla.edu.black.conexion.Conexion"%>
 <%
 
-    String funciono = "";
+    int funciono = 0;
 
-    Connection con = Conexion.getConexion();
-    
-    NewFeed feed =  new NewFeed(con);
+    NewFeed feed =  new NewFeed();
     
     funciono = feed.newFeed(request.getParameter("id"),request.getParameter("feed"));
     

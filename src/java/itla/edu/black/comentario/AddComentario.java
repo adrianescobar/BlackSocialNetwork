@@ -1,39 +1,35 @@
 package itla.edu.black.comentario;
 
-import java.sql.Connection;
-import java.sql.Statement;
+import itla.edu.black.conexion.Conexion;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 public class AddComentario {
     
-    Connection con;
+    private Conexion con;
+    private PreparedStatement insert = null;
     
-    public AddComentario(Connection con){
-    
-        this.con = con;
-    
+    public AddComentario(){
+        this.con = Conexion.getInstance();
+        try {
+            this.insert = con.getConexion().prepareStatement("insert into comentario_estado(id_estado,id_usuario,comentario) values(?,(select id_usuario from usuario where email = ?), ?");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al agregar comentario");
+        }
     }
      
-    public String addComentario(String id,String comentario,String usuario){
-    
-        String resultado = "";
-        
+    public int addComentario(String id,String comentario,String usuario){
+        int resultado = 0;
         try{
-        
-            Statement agregarComentario = (Statement) con.createStatement();
-            
-            resultado = ""+agregarComentario.executeUpdate("insert into comentario_estado(id_estado,id_usuario,comentario) values('"+id+"',(select id_usuario from usuario where email='"+usuario+"'),'"+comentario+"')");
-        
-            
-        
+            insert.setString(1, id);
+            insert.setString(2, comentario);
+            insert.setString(3, usuario);
+            resultado = insert.executeUpdate();
         }
         catch(Exception e){
-        
-            resultado = ""+e;
-            
+            JOptionPane.showMessageDialog(null, "Error al agregar comentario");
         }
-        
         return resultado;
     }
-    
-    
 }

@@ -42,9 +42,7 @@
 
         }
        
-        Connection con = Conexion.getConexion();
-
-            UserData data = new UserData(con);
+            UserData data = new UserData();
 
             String[] userData = data.getUserData(request.getParameter("user"));
 
@@ -108,7 +106,7 @@
                             
                         <%
                         
-                            GetAlbuns albun = new GetAlbuns(con);
+                            GetAlbuns albun = new GetAlbuns();
                             
                             ArrayList<String[]> albunes = albun.getAlbuns(userData[0]);
                             

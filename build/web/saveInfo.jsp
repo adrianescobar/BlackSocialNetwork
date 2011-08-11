@@ -6,9 +6,7 @@
 
 <%
 
-    Connection con = Conexion.getConexion();
-    
-    UpdateInfo info =  new UpdateInfo(con);
+    UpdateInfo info =  new UpdateInfo();
     
     out.println(info.saveInfo(request.getParameter("nombre"),request.getParameter("apellido"),
                             request.getParameter("oldpass"), request.getParameter("newpass")

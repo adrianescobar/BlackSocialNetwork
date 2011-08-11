@@ -54,9 +54,7 @@
         
         <%
 
-            Connection con = Conexion.getConexion();
-
-            UserData data = new UserData(con);
+            UserData data = new UserData();
 
             String[] userData = data.getUserData(request.getParameter("email"));
 
@@ -86,7 +84,13 @@
                 <div id="estado">
                     
                     <%
+<<<<<<< HEAD
                         LastEstate last = new LastEstate(con);
+=======
+                    out.println(userData[0]+userData[1]+userData[2]);
+                    
+                        LastEstate last = new LastEstate();
+>>>>>>> bed834779b4af3dae25ee83c3f9326faa9475539
                         
                         ArrayList<String[]> ultimoEstado = last.lastEstate((String)session.getAttribute("usuario"),1);
                         
@@ -132,7 +136,7 @@
                             
                             <% 
                             
-                                ShowComentario show = new ShowComentario(con);
+                                ShowComentario show = new ShowComentario();
                             
                                 ArrayList<String[]> estados = last.lastEstate((String)request.getParameter("email"),20);
                                 

@@ -3,10 +3,7 @@
 <%@page import="itla.edu.black.conexion.Conexion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-
-    Connection con = Conexion.getConexion();
-    
-    CrearAlbum albun = new CrearAlbum(con);
+    CrearAlbum albun = new CrearAlbum();
     
     String resultado = albun.crearAlbum(request.getParameter("nombre"), request.getParameter("email"));
 

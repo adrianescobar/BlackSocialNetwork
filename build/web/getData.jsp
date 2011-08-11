@@ -4,11 +4,7 @@
 <%@page import="itla.edu.black.conexion.Conexion"%>
 
 <%
-
-   
-    Connection con = Conexion.getConexion();
-    
-    UserData data = new UserData(con);
+    UserData data = new UserData();
     
     String[] userData = data.getUserData(request.getParameter("email"));
     
