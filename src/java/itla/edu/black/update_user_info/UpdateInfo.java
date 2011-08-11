@@ -24,11 +24,11 @@ public class UpdateInfo {
         try{
             update.setString(1, nombre);
             update.setString(2, apellido);
-            update.setString(3, oldpass);
-            update.setString(4, newpass);
+            update.setString(3, newpass);
+            update.setString(4, sexo);
             update.setString(5, estado);
-            update.setString(6, sexo);
-            update.setString(7, mail);
+            update.setString(6, mail);
+            update.setString(7, oldpass);
             ret = update.executeUpdate();
         
         }catch(Exception e){
