@@ -84,13 +84,9 @@
                 <div id="estado">
                     
                     <%
-<<<<<<< HEAD
-                        LastEstate last = new LastEstate(con);
-=======
+                    LastEstate last = new LastEstate();
                     out.println(userData[0]+userData[1]+userData[2]);
                     
-                        LastEstate last = new LastEstate();
->>>>>>> bed834779b4af3dae25ee83c3f9326faa9475539
                         
                         ArrayList<String[]> ultimoEstado = last.lastEstate((String)session.getAttribute("usuario"),1);
                         
